@@ -1,45 +1,74 @@
 describe('Test Suite-Sign Up', () => {
-    const url = "https://branch-qa-challenge.holded.dev/signup",
-          inputName = data-test-id=signup-name",
-          inputPhone = data-test-id=signup-phone",
-          inputEmail = data-test-id=signup-email",
-          inputPassword =data-test-id=signup-password",          
-          button = data-test-id=button-signup",
-          name = "Johona Doe",
-          phone = "123456789",
-          emailRegistered = "marinatouceda79@gmail.com",
-          
-          password ="Test1234";
+  const url = "https://my.wallbox.com/login",
 
-  it('Register user', () => {
-    let email = "random" + Math.round(Math.random(1.1000)*100) + "@gmail.com";
+  // Selectors
+        registerModal = ".is-margin-bottom-32 ",
+        inputName = "[data-test-id=nameInputModal]",
+        inputLastname ="[data-test-id=surnameInputModal]",        
+        inputEmail = "[data-test-id=emailInputModal]",
+        inputConfirmEmail ="[data-test-id=confirmEmailInputModal]",
+        inputPassword = "[data-test-id=passwordInputModal]", 
+        inputConfirmPassword = "[data-test-id=confirmPasswordInputModal]",
+        selectCountry = "[data-test-id=countrySelectModal]",
+        checkboxTerms = "[data-test-id=privacyCheckboxModal]",
+        marketingCheckbox = "[data-test-id=marketingCheckboxModal]",     
+        button = "[data-test-id=registerBtnModal]",   
+        spanError = ".error",     
+        validationMessage = "Ya hay un usuario registrado con esta dirección de correo.",
 
-    cy.visit(url)
-    cy.url().should('include', '/signup')   
-    //user
-    cy.get(inputName)
-    .type(name)
-    .should("have.value", name);      
+  //Data      
+        name = "Johona",
+        lastname = "Doe",         
+        password ="Test1234",
+        email = "marinatouceda79@gmail.com";        
 
-    cy.get(inputPhone)
-    .type(phone)
-    .should("have.value", phone);
+it('Register user', () => {  
 
-    cy.get(inputEmail)
-    .type(email)
-    .should("have.value", email);
+  cy.visit(url)
+  cy.url().should('include', '/login')   
+  //open model
 
-    cy.get(inputPassword)
-    .type(password)
-    .should("have.value", password);
+  cy.get(registerModal).click() // Click on button
+  
 
-    //Captcha
-    cy.solveGoogleReCAPTCHA();    
-    cy.get('[type="checkbox"]').check();
+  cy.get(inputName)
+  .type(name)
+  .should("have.value", name);      
 
-    //finish sign up
-    cy.get(button).click();
-    
-  })   
+  cy.get(inputLastname)
+  .type(lastname)
+  .should("have.value", lastname);
+
+  cy.get(inputEmail)
+  .type(email)
+  .should("have.value", email);
+
+  cy.get(inputConfirmEmail)
+  .type(email)
+  .should("have.value", email);
+
+  cy.get(inputPassword)
+  .type(password)
+  .should("have.value", password);
+
+  cy.get(inputConfirmPassword)
+  .type(password)
+  .should("have.value", password);
+
+  cy.get(selectCountry).click().type('{downarrow}{enter}')
+  
+ // Checkboxes
+
+  cy.get('[type="checkbox"]').check({force: true})
+
+
+  //finish sign up
+  cy.get(button).click();
+  
+  //Get error for user already registered
+  cy.get(spanError)
+    .should("have.text", validationMessage);
+  
+})   
 
 })
