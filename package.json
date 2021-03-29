@@ -1,0 +1,32 @@
+{
+  "name": "register",
+  "version": "1.0.0",
+  "description": "test for register a user",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "end2end": "npx cypress run /integration/end2end/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toucedam/register-test.git"
+  },
+  "keywords": [
+    "test",
+    "cypress",
+    "register"
+  ],
+  "author": "toucedam",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^6.6.0",
+    "mocha": "^8.3.1",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/toucedam/register-test/issues"
+  },
+  "homepage": "https://github.com/toucedam/register-test#readme"
+}

@@ -6,6 +6,15 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+#cypress files
+/cypress/integration/examples
+/cypress/videos
+/cypress/screenshots
+/cypress/snapshots
+
+test-results.xml
+cypress.env.json
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
