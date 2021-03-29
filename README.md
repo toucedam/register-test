@@ -2,8 +2,10 @@
 
 Cypress challenge-Implement automation test  sign up  <br />
 
-To run the tests with cypress<br />
+To run the tests with npm<br />
 Do npm install <br />
+Do npm run end2end <br />
+To run the tests with cypress<br />
 to run the test openning cypress use npx cypress open <br />
 to run the test phantom use npx cypress run <br />
 
