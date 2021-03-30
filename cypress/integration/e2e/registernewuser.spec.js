@@ -2,7 +2,7 @@ describe('Test Suite-Sign Up', () => {
     const url = "https://my.wallbox.com/login",
 
     // Selectors
-          registerModal = ".is-margin-bottom-32 ",
+          registerModal = "[data-test-id=registerBtn]",
           inputName = "[data-test-id=nameInputModal]",
           inputLastname ="[data-test-id=surnameInputModal]",        
           inputEmail = "[data-test-id=emailInputModal]",
@@ -15,7 +15,7 @@ describe('Test Suite-Sign Up', () => {
           button = "[data-test-id=registerBtnModal]",
           confirmModal = "[data-test-id =confirmBtnModal]",
           textComfirm = '.has-text-primary',
-          messageConfirm = "¡Gracias!",
+          messageConfirm = "Thank you!",
 
     //Data      
           name = "Johona",
@@ -23,7 +23,7 @@ describe('Test Suite-Sign Up', () => {
           password ="Test1234",
           country = "Spain";
 
-  it('Register user', () => {
+  it('Register new user', () => {
     let email = "random" + Math.round(Math.random(1.1000)*100) + "@gmail.com";
 
     cy.visit(url)
@@ -65,6 +65,7 @@ describe('Test Suite-Sign Up', () => {
 
 
     //finish sign up
+    cy.wait(1000);
     cy.get(button).click();
 
     //Confirm modal success

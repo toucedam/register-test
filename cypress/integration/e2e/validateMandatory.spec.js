@@ -2,14 +2,14 @@ describe('Test Suite-Sign Up', () => {
     const url = "https://my.wallbox.com/login",
 
     // Selectors
-          registerModal = ".is-margin-bottom-32 ",             
+          registerModal = "[data-test-id=registerBtn]",          
           button = "[data-test-id=registerBtnModal]",
           classError = ".error",
-          validationMessage = "Campo obligatorio"; 
+          validationMessage = "Field is required"; 
 
    
 
-  it('Register user', () => {
+  it('Check mandatories fields', () => {
     let email = "random" + Math.round(Math.random(1.1000)*100) + "@gmail.com";
 
     cy.visit(url)

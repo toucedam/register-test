@@ -13,8 +13,9 @@ describe('Test Suite-Sign Up', () => {
         checkboxTerms = "[data-test-id=privacyCheckboxModal]",
         marketingCheckbox = "[data-test-id=marketingCheckboxModal]",     
         button = "[data-test-id=registerBtnModal]",   
-        spanError = ".error",     
-        validationMessage = "Ya hay un usuario registrado con esta dirección de correo.",
+        spanError = ".error",  
+        validationMessage = "A registered user with this email address already exists.",   
+        validationMessageEspanish = "Ya hay un usuario registrado con esta dirección de correo.",
 
   //Data      
         name = "Johona",
@@ -22,7 +23,7 @@ describe('Test Suite-Sign Up', () => {
         password ="Test1234",
         email = "marinatouceda79@gmail.com";        
 
-it('Register user', () => {  
+it('Try to register an existing user', () => {  
 
   cy.visit(url)
   cy.url().should('include', '/login')   
@@ -61,7 +62,7 @@ it('Register user', () => {
 
   cy.get('[type="checkbox"]').check({force: true})
 
-
+  cy.wait(1000);
   //finish sign up
   cy.get(button).click();
   
